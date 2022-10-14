@@ -2,8 +2,9 @@
 :-dynamic robot/1.
 
 %The location of robot and goal
-robot(1).
+robot(5).
 goal(5).
+goal(7).
 %The first link of the predicate
 link(1,2).
 link(2,3).

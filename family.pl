@@ -36,7 +36,6 @@ sister(X, Y) :-
       female(X).
 
 
-
 father(X,Y) :-
     male(X),
     parent(X,Y).
@@ -54,7 +53,15 @@ cousin(X,Y) :-
 % stap 6
 ancestor(X,Y) :-
     parent(X,Y).
+% recursive predicate 
+ancestor(X,Y) :-
+    parent(X,Z),ancestor(Z,Y).
 
 family(X,Y) :-
-    ancestor(X,Y) ; sibling(X,Y) ; cousin(X,Y),
+    ancestor(X,Y) ; sibling(X,Y) ; cousin(X,Y) ; grandchild(X,Y),
     X\=Y.
+
+grandparent(X,Y):- 
+    parent(X,Z),parent(Z,Y).
+grandchild(X,Y):-
+    grandparent(Y,X).
