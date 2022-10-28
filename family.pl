@@ -6,6 +6,7 @@ male(merlijn).
 male(peter).
 female(sofie).
 female(sandrine).
+female(fien). % toegevoegd
 parent(joost,sacha).
 parent(joost,leon).
 parent(sandrine,sacha).
