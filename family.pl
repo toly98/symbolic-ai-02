@@ -14,9 +14,9 @@ parent(fien,sofie).
 parent(fien,merlijn).
 parent(peter,fien).
 parent(peter,joost).
+
+
 isChild(X) :- parent(Y,X).
-
-
 sibling(X, Y) :-
       parent(Z, X),
       parent(Z, Y),
@@ -58,10 +58,35 @@ ancestor(X,Y) :-
     parent(X,Z),ancestor(Z,Y).
 
 family(X,Y) :-
-    ancestor(X,Y) ; sibling(X,Y) ; cousin(X,Y) ; grandchild(X,Y),
-    X\=Y.
+    ancestor(X,Y) ; sibling(X,Y) ; cousin(X,Y) ; grandchild(X,Y) ; wife(X,Y) ; grandparent(X,Y); husband(X,Y); uncle(X,Y); aunt(X,Y) ; nephew(X,Y) ; niece(X,Y).
+%    X\=Y.
 
 grandparent(X,Y):- 
     parent(X,Z),parent(Z,Y).
 grandchild(X,Y):-
     grandparent(Y,X).
+
+
+wife(X,Y):-
+    parent(X,Z),
+    parent(Y,Z),
+    female(X),
+    male(Y).
+
+husband(X,Y):-
+    parent(X,Z),
+    parent(Y,Z),
+    male(X),
+    female(Y).
+
+
+uncle(X, Y) :- brother(X, Z), parent(Z,Y).
+
+aunt(X, Y) :- sister(X, Z), parent(Z,Y).
+
+nephew(X, Y) :- uncle(Y, X).
+
+niece(X, Y) :- aunt(Y, X).
+
+
+
