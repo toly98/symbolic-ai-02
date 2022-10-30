@@ -27,6 +27,6 @@ tp(L) :- retract(robot(_)), assert(robot(L)).
 %path() :- robot(R), goal(G), \+ (R = G) ; link(R,NEW)-> move(NEW), path().
 path :- robot(R), goal(G), \+ (R = G) ; link(R,NEW) ; link(NEW,_)-> move(NEW), path().
 
-path(P) :- robot(R), goal(G), \+ (R = G) ; link(R,NEW) ; link(NEW,_)-> move(NEW), path(P).
+path(P) :- robot(R), goal(G), \+ (R = G) ; link(R,NEW) ; link(NEW,_)-> move(NEW), path([]).
 
 append ( [ X | Y ] , Z, [X | W] ) :- append (Y , Z, W) .

@@ -1,0 +1,1 @@
+swipl wumpus.pl
